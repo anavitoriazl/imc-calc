@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        .desnutrido {
+            background-color: bisque;
+            color: red;
+        }
+        .normal {
+            background-color: blue;
+            color: black;
+        }
+        .preobesidade {
+            background-color: antiquewhite;
+            color: black;
+        }
+        .obeso {
+            background-color: antiquewhite;
+            color: red;
+        }
+        p {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font: 50px;
+        }
+    </style>
+</head>
+<body>
+   <h1>Calculadora de IMC</h1> 
+   <hr>
+   
+   <script>
+       var nome = prompt ("Digite o seu nome")
+       document.write("Olá <strong>" ,nome, "</strong><br>")
+       var pesotexto = prompt("Digite o peso")
+       var alturatexto = prompt("Digite a altura")
+       var peso = parseFloat(pesotexto)
+       var altura = parseFloat (alturatexto)
+       var IMC = peso / (altura*altura)
+       document.write("Peso: " ,peso, "<br>")
+       document.write ("Altura:: " ,altura, "<br>")
+       document.write ("IMC: ",IMC.toFixed(2), "<br>")
+       if (IMC <= 18.5){
+           document.write ("<p class=desnutrido>Voce está desnutrido<br>")
+           document.write('<img src= "desnutrido.jpg" width= "80" height="120" height="120">')
+       } else if (IMC <= 24.9) {
+            document.write("<p class=normal>Voce está com peso normal</p><br>")
+            document.write('<img src="normal.jpg" width= "80" height="120">')
+
+
+
+       } else if (IMC <= 29.9) {
+        document.write("<p class=preobesidade>Voce está com sobre-peso pré-obesidade")
+        document.write('<img src= "preobesidade.jpg"width= "80" height= "120" height= "120">')
+       } else {
+          document.write ("<p class=obeso>Cuidado, voce está obeso.")
+          document.write ('<img src= "obeso.jpg"width= "80" height= "120" height= "120">')
+       }
+
+
+
+
+
+
+
+
+
+
+
+   </script>
+</body>
+</html>
