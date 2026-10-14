@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculadora de IMC - Exemplo procedural</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+                background-color:#f4f4f9;
+            }
+            .resultado.box {
+                background: white;
+                padding:20px;
+                border-radius: 8px;
+                display: inline-block;
+                box-shadow: 0px 0px 10px rgba (0,0,0,0,0.1);
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="resultado-box">
+            <h1>Calculadora de IMC</h1>
+            <script>
+                let nome = prompt ("Digite o seu nome:");
+                let pesoStr = prompt("Digite o seu peso em kg (ex: 70.5):");
+                let alturaStr = prompt("Digite a sua altura em metros (ex:1.75):");
+                let peso = parseFloat(pesoStr);
+                let altura = parseFloat(alturaStr);
+
+                if (!nome || isNaN(peso) || isNaN(altura) <=0) {
+                    document.write ("<p style='color:red;'>Dados inválidos inseridos. Por favor, recarregue a página.</p>");
+
+                } else {
+                    let imc = peso / (altura*altura);
+                    let classificação = "";
+                    if(imc < 18.5) {
+                        classificacao = "Abaixo do peso ideal";
+                    } else if (imc >= 18.5 && imc < 25) {
+                        classificacao = "Peso normal (Eutrofia)";
+                    } else if (imc >= 25 && imc < 30) {
+                        classificacao = "Sobrepeso";
+
+                    } else {
+                        classificacao+"Obesidade"
+                    }
+                    document.write ("<h2>resultado para: " +nome+ "</h2>");
+                    document.write("<p><strong>Peso:</strong> "+peso.toFixed(2)+ "kg</p>");
+                    documnt.write ("<p><strong>Altura:</strong> "+altura.toFixed(2) + "m</p>");
+                    document.write ("<p><strong>Seu IMC é:</strong>"+ imc.toFixed(2)+ "</p>");
+                    document.write ("<p><strong>Condição:</strong " + classificação + "</p>");
+                        
+
+                }
+            </script>
+        </div>
+    </body>
+
+
+</html>

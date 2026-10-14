@@ -3,72 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#eef4ff">
     <title>Calculadora de IMC</title>
-    <style>
-        .desnutrido {
-            background-color: rgb(252, 232, 208);
-            color: rgb(248, 206, 241);
-        }
-        .normal {
-            background-color: rgb(246, 199, 255);
-            color: black;
-        }
-        .preobesidade {
-            background-color: antiquewhite;
-            color: black;
-        }
-        .obeso {
-            background-color: antiquewhite;
-            color: rgb(247, 194, 231);
-        }
-        p {
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
-   <h1>Calculadora de IMC</h1> 
-   <hr>
-   
-   <script>
-       var nome = prompt ("Digite o seu nome")
-       document.write("Olá <strong>" ,nome, "</strong><br>")
-       var pesotexto = prompt("Digite o peso")
-       var alturatexto = prompt("Digite a altura")
-       var peso = parseFloat(pesotexto)
-       var altura = parseFloat (alturatexto)
-       var IMC = peso / (altura*altura)
-       document.write("Peso: " ,peso, "<br>")
-       document.write ("Altura:: " ,altura, "<br>")
-       document.write ("IMC: ",IMC.toFixed(2), "<br>")
-       if (IMC <= 18.5){
-           document.write ("<p class=desnutrido>Voce está desnutrido<br>")
-           document.write('<img src= "desnutrido.jpg" width= "80" height="120" height="120">')
-       } else if (IMC <= 24.9) {
-            document.write("<p class=normal>Voce está com peso normal</p><br>")
-            document.write('<img src="normal.jpg" width= "80" height="120">')
+    <main class="calculator">
+        <p class="eyebrow">Bem-estar</p>
+        <h1>Calculadora de IMC</h1>
+        <p class="intro">Informe seus dados para descobrir seu Índice de Massa Corporal.</p>
 
+        <form id="imc-form" novalidate>
+            <div class="fields">
+                <div>
+                    <label for="nome">Seu nome <span>(opcional)</span></label>
+                    <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" placeholder="Como podemos chamar você?">
+                </div>
+                <div>
+                    <label for="peso">Peso (kg)</label>
+                    <input type="number" id="peso" name="peso" min="1" max="500" step="any" inputmode="decimal" required placeholder="Ex.: 70">
+                </div>
+                <div>
+                    <label for="altura">Altura (m)</label>
+                    <input type="number" id="altura" name="altura" min="0.5" max="2.7" step="any" inputmode="decimal" required placeholder="Ex.: 1,75">
+                </div>
+            </div>
+            <button type="submit">Calcular meu IMC</button>
+            <p id="erro" class="error" role="alert" aria-live="polite"></p>
+        </form>
 
-
-       } else if (IMC <= 29.9) {
-        document.write("<p class=preobesidade>Voce está com sobre-peso pré-obesidade")
-        document.write('<img src= "preobesidade.jpg"width= "80" height= "120" height= "120">')
-       } else {
-          document.write ("<p class=obeso>Cuidado, voce está obeso.")
-          document.write ('<img src= "obeso.jpg"width= "80" height= "120" height= "120">')
-       }
-
-
-
-
-
-
-
-
-
-
-
-   </script>
+        <section id="resultado" class="result" aria-live="polite" aria-atomic="true" hidden>
+            <p id="saudacao" class="result__greeting"></p>
+            <p class="result__value"><span id="valor-imc"></span></p>
+            <p id="detalhes" class="result__details"></p>
+            <p id="classificacao" class="result__status"></p>
+            <img id="figura" class="result__image" alt="">
+            <p class="result__note">O IMC é uma referência geral e não substitui a avaliação de um profissional de saúde.</p>
+        </section>
+    </main>
+    <script src="app.js"></script>
 </body>
 </html>
